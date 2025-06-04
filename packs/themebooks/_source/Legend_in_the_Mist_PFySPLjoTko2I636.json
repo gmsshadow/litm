@@ -1,0 +1,19 @@
+{
+  "name": "Legend in the Mist",
+  "sorting": "a",
+  "folder": null,
+  "type": "Item",
+  "_id": "PFySPLjoTko2I636",
+  "sort": 300000,
+  "color": "#2dc878",
+  "flags": {},
+  "_stats": {
+    "systemId": "city-of-mist",
+    "systemVersion": "3.0.7",
+    "coreVersion": "11.315",
+    "createdTime": 1711669249534,
+    "modifiedTime": 1714998356232,
+    "lastModifiedBy": "XObjulrAnIfZ284S"
+  },
+  "_key": "!folders!PFySPLjoTko2I636"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "City of Mist",
+  "sorting": "a",
+  "folder": null,
+  "type": "Item",
+  "_id": "ZDcIODfuga0x0Nzv",
+  "sort": 200000,
+  "color": "#828282",
+  "flags": {},
+  "_stats": {
+    "systemId": "city-of-mist",
+    "systemVersion": "3.0.7",
+    "coreVersion": "11.315",
+    "createdTime": 1712593799177,
+    "modifiedTime": 1714998356232,
+    "lastModifiedBy": "XObjulrAnIfZ284S"
+  },
+  "_key": "!folders!ZDcIODfuga0x0Nzv"
+}
