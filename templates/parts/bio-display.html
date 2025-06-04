@@ -1,0 +1,26 @@
+<div class="bio-subsection description-area">
+	<div class="bio-section-label">
+		{{localize "CityOfMist.terms.description"}}
+	</div>
+	<div class="editor-box">
+		{{editor description target="system.description" button=true owner=owner editable=true engine="prosemirror" collaborate=false}}
+	</div>
+</div>
+<div class="bio-subsection bio-area">
+	<div class="bio-section-label">
+		{{localize "CityOfMist.terms.biography"}}
+	</div>
+	<div class="editor-box">
+	{{editor biography target="system.biography" button=true owner=owner editable=true engine="prosemirror" collaborate=false}}
+	</div>
+</div>
+{{#if (and (isGM) (not lockout))}}
+<div class="bio-subsection gmnotes-area">
+	<div class="bio-section-label">
+		{{localize "CityOfMist.terms.mc_notes"}}
+	</div>
+	<div class="editor-box">
+	{{editor gmnotes target="system.gmnotes" button=true owner=owner editable=true engine="prosemirror" collaborate=false}}
+	</div>
+</div>
+{{/if}}

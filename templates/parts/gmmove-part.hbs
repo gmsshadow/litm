@@ -1,0 +1,10 @@
+<div class="gmmove-section">
+	{{#if (and (neq move.name "Unnamed Move") (not move.system.hideName)) }}
+	<div class="gmmove-name">{{move.name}} </div>
+	<hr>
+	{{/if}}
+	<div class="gmmove-description">
+		{{formatGMMoveText move actor showPrivate}}
+	</div>
+</div>
+

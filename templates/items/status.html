@@ -1,0 +1,30 @@
+<form class="{{cssClass}} status-sheet flex-col item-edit-dialog" autocomplete="off">
+	<label class="dialog-label" for="name">
+		{{localize "CityOfMist.terms.name"}}
+	</label>
+	<input class="status-name-input" type="text" name="name" value="{{item.name}}">
+	<label class="dialog-label" for="tier">
+		{{localize "CityOfMist.terms.Tier"}}
+	</label>
+	<input id="status-tier" type="number" name="system.tier" value="{{item.system.tier}}">
+	{{#if (isCoM)}}
+	<label class="dialog-label" for="pips"> Pips </label>
+	<input id="status-pips" type="number" name="system.pips" value="{{item.system.pips}}">
+	{{/if}}
+	<label class="dialog-label" for="temp">
+		{{localize "CityOfMist.terms.temporary"}}
+	</label>
+	<input id="temporary-status-checkbox" class="item-checkbox" type="checkbox" name="system.temporary" {{#if item.system.temporary}} checked {{/if}}>
+	<label class="dialog-label" for="permanent">
+		{{localize "CityOfMist.terms.permanent"}}
+	</label>
+	<input id="permanent-status-checkbox" class="item-checkbox" type="checkbox" name="system.permanent" {{#if item.system.permanent}} checked {{/if}}>
+	{{#if (showcasePossible item)}}
+	<label for="showcased">
+		{{localize "CityOfMist.terms.showcased"}}
+	</label>
+	<input type="checkbox" class="item-checkbox" name="system.showcased" {{#if item.system.showcased}} checked{{/if}}>
+	{{/if}}
+	<hr>
+</form>
+

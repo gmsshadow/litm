@@ -1,0 +1,19 @@
+<form class="{{cssClass}} themebook-selection-dialog flex-col" autocomplete="off">
+	<div id="themebook-choices">
+		{{#each themebooks as |themebook|}}
+		<div>
+			<input type="radio" name="themebook" value="{{themebook.name}}">
+			<label class="themebook-selector-themebook-name">
+				{{themebook.displayedName}}
+			</label>
+		</div>
+		{{/each}}
+		<div>
+			<input type="radio" name="themebook" value='theme-kit'>
+			<label class="themebook-selector-themebook-name">
+				{{localize "CityOfMist.dialog.themebook_select.themekit"}}
+			</label>
+		</div>
+	</div>
+</form>
+<hr>

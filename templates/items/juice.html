@@ -1,0 +1,36 @@
+<form class="{{cssClass}} juice-sheet flex-col item-edit-dialog">
+	{{#if (isHelpHurt item)}}
+	<label class="dialog-label" for="target">
+		{{localize "CityOfMist.terms.target"}}
+	</label>
+	<select name="system.targetCharacterId" data-dtype="String">
+		{{#select item.system.targetCharacterId}}
+		{{#each (PCList) as |pc|}}
+		<option value="{{pc.id}}">{{displayAlias pc}}</option>
+	   {{/each}}
+		{{/select}}
+	</select>
+
+	{{else}}
+	<label class="dialog-label" for="name">
+		{{localize "CityOfMist.terms.name"}}
+	</label>
+	<input type="text" name="name" value="{{item.name}}">
+	{{/if}}
+	<label class="dialog-label" for="amount">
+		{{localize "CityOfMist.terms.amount"}}
+	</label>
+	<input type="number"  name="system.amount" value="{{item.system.amount}}">
+	{{#if (not (isHelpHurt item))}}
+	<label class="dialog-label" for="source">
+		{{localize "CityOfMist.terms.juiceSource"}}
+	</label>
+	<input type="text" name="system.source" value="{{item.system.source}}">
+	<label class="dialog-label" for="method">
+		{{localize "CityOfMist.terms.juiceMethod"}}
+	</label>
+	<input type="text" name="system.method" value="{{item.system.method}}">
+	{{/if}}
+	<hr>
+</form>
+

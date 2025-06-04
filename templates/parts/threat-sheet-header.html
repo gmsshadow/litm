@@ -1,0 +1,51 @@
+<div class="header-row">
+	<input type="text" class="borderless danger-name" name="name" value="{{actor.name}}" title="Danger Name" placeholder="Danger Name" {{#if actor.system.locked}} disabled {{/if}}>
+	<div class="separator-icon"> &diams;</div>
+	{{#if actor.isToken}}
+	<input class="alias-input alias-input-unlinked-token borderless" type="text" value="{{actor.token.name}}" data-active-token="{{actor.token}}" title="{{localize 'CityOfMist.terms.alias' }} " placeholder="{{localize 'CityOfMist.terms.alias' }} ">
+	{{else}}
+	<input class="alias-input alias-input-prototype borderless" type="text" name="token.name" value="{{actor.prototypeToken.name}}" title="Alias / Token Name" placeholder="Alias / Token Name">
+	{{/if}}
+</div>
+<div class="header-row">
+	<input type="text" class="borderless mythos-name" name="system.mythos" value="{{actor.system.mythos}}" placeholder="{{localize 'CityOfMist.terms.mythos' }} " title="{{localize 'CityOfMist.terms.mythos' }} " {{#if actor.system.locked}} disabled {{/if}}>
+	<div class="separator-icon"> &diams;</div>
+	<input type="text" class="borderless logos-name" name="system.logos" value="{{actor.system.logos}}" placeholder="{{localize 'CityOfMist.terms.logos' }} " title="{{localize 'CityOfMist.terms.logos' }} " {{#if actor.system.locked}} disabled {{/if}}>
+</div>
+<div class="header-row">
+	<input type="text" class="borderless short-description" name="system.short_description" value="{{actor.system.short_description}}" placeholder="{{localize 'CityOfMist.terms.short_desc' }} " title="{{localize 'CityOfMist.terms.short_desc' }} " {{#if actor.system.locked}} disabled {{/if}}>
+</div>
+{{#if actor.system.locked}}
+<div class="header-row">
+	<div class="spectrum-list">
+		<b>
+			{{localize 'CityOfMist.terms.spectrums' }}
+		</b>
+		{{#each actor.spectrums as |spectrum id|}}
+		<div class="spectrum-short-label">
+			{{spectrum.name}} {{spectrumConvert spectrum.system.maxTier}}
+		</div>
+		{{/each}}
+	</div>
+</div>
+<div class="header-row">
+	<label class="dialog-label" for="name">
+		{{#if usingCollective}}
+		{{localize "CityOfMist.terms.collectiveSize"}}
+		{{else}}
+		{{localize "Otherscape.terms.scale"}}
+		{{/if}}
+	</label>
+	<input type="radio" name="system.collectiveSize" value=0 {{#if (eq 0 actor.system.collectiveSize)}} checked {{/if}} > 0 </input>
+	<input type="radio" name="system.collectiveSize" value=1 {{#if (eq 1 actor.system.collectiveSize)}} checked {{/if}} > 1 </input>
+	<input type="radio" name="system.collectiveSize" value=2 {{#if (eq 2 actor.system.collectiveSize)}} checked {{/if}}  > 2 </input>
+	<input type="radio" name="system.collectiveSize" value=3 {{#if (eq 3 actor.system.collectiveSize)}} checked {{/if}}  > 3 </input>
+	<input type="radio" name="system.collectiveSize" value=4 {{#if (eq 4 actor.system.collectiveSize)}} checked {{/if}}  >4 </input>
+	<input type="radio" name="system.collectiveSize" value=5 {{#if (eq 5 actor.system.collectiveSize)}} checked {{/if}}  >5 </input>
+	<input type="radio" name="system.collectiveSize" value=6 {{#if (eq 6 actor.system.collectiveSize)}} checked {{/if}}  >6 </input>
+</div>
+
+
+{{/if}}
+
+

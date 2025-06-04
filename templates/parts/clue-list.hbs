@@ -1,0 +1,40 @@
+<section class="clue-list-section story-tag-box" data-owner-id="{{actor.id}}">
+	<h2 class="section-name">
+		<span class="flip-button">
+					<span title="Flip Card"><i class="fa-solid fa-turn-up"></i> </span>
+			{{localize "CityOfMist.terms.clues"}}
+		</span>
+		<span>
+			<a class="create-clue" data-item-type="clue" data-actor-id={{actor.id}}> <i class="fas fa-plus-square"></i></a>
+		</span>
+
+	</h2>
+	<div class="clues-list">
+		{{#each actor.clues as |clue|}}
+		<div class="flex-row" data-clue-id="{{clue.id}}">
+			<div class="flex-narrow flex-line flex-trash">
+				{{#if (not ../owner.system.locked)}}
+				<a class="item-control clue-delete" title="Delete Clue"><i class="fas fa-trash shrink-icon"></i></a>
+				{{/if}}
+			</div>
+			<div class="flex-wide">
+				<span class="clue-name">
+					{{clue.displayedName}}
+					{{#if (gt clue.system.amount 1)}}
+					({{clue.system.amount}})
+					{{/if}}
+					{{#if clue.system.partial}}
+					(partial)
+					{{/if}}
+				</span>
+			</div>
+			<div class="flex-narrow">
+				<a class="clue-use-button">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</a>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+</section>
+

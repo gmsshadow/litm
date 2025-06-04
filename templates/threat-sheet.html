@@ -1,0 +1,113 @@
+<form class="{{cssClass}} threat-sheet flexcol {{#if actor.system.locked}} locked item-selection-context {{else}} unlocked item-edit-context {{/if}}" autocomplete="off" data-owner-id="{{actor.id}}" data-owner-class="actor" data-sheet-owner-id="{{actor.id}}" data-owner-class="actor" data-token-id="{{actor.tokenId}}" data-scene-id="{{actor.sceneId}}">
+	<header class="sheet-header">
+		<div class="image-block">
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}">
+		</div>
+		<div class="character-basic-info">
+			{{> "systems/city-of-mist/templates/parts/threat-sheet-header.html" locked=actor.system.locked sheetowner=actor actor=actor items=items}}
+		</div>
+		<div class="flex-col no-overflow">
+			<div class="lock-button">
+				{{> "systems/city-of-mist/templates/parts/lock-button.html" actor=actor}}
+			</div>
+			<div class="Checkbox">
+				{{#if (and (isGM) (not actor.system.locked))}}
+				<label>
+					{{localize 'CityOfMist.terms.isTemplate' }}
+				</label>
+				<input type="checkbox" name="system.is_template" {{#if actor.system.is_template}} checked {{/if}} >
+				{{/if}}
+			</div>
+		</div>
+		</div>
+	</header>
+	{{#if (and (not actor.system.locked) (isGM))}}
+	<section class="threat-spectrums">
+		<div class="spectrum-section-label">
+			{{localize 'CityOfMist.terms.spectrums' }}
+			{{#if (not actor.system.locked)}}
+			<a class="create-spectrum" data-actor-id={{actor.id}}> <i class="fas fa-plus-square"></i></a>
+		</div>
+		{{/if}}
+		<div class="spectrum-list">
+			{{#each actor.my_spectrums as |spectrum id|}}
+			{{> "systems/city-of-mist/templates/parts/spectrum-display.html" spectrum=spectrum owner=../actor locked=../actor.system.locked sheetowner=actor }}
+			{{/each}}
+		</div>
+	</section>
+	{{/if}}
+	<nav class="sheet-tabs tabs" data-group="primary">
+		{{#if ( isGM )}}
+		<a class="item" data-tab="moves">
+			{{localize 'CityOfMist.terms.moves' }} /
+			{{localize 'CityOfMist.terms.tags' }}
+		</a>
+		{{/if}}
+		<a class="item" data-tab="themes">
+			{{localize 'CityOfMist.terms.themes' }}
+
+		</a>
+		<a class="item" data-tab="bio">
+			{{localize 'CityOfMist.terms.bio' }}
+		</a>
+	</nav>
+	<section class="sheet-body {{#if actor.system.locked}} locked item-selection-context {{else}} unlocked item-edit-context {{/if}} ">
+		<div class="tab tab-content" data-group="primary" data-tab="moves">
+			<div class="flex-row">
+				<div class="flex-overview-block">
+					{{> "systems/city-of-mist/templates/parts/gmmoves-section.hbs" owner=actor locked=actor.system.locked sheetowner=actor}}
+					{{> "systems/city-of-mist/templates/parts/danger-template.html" owner=actor locked=actor.system.locked sheetowner=actor actor=actor}}
+				</div>
+				<div class="flex-column">
+					<div class="flip-card-front story-tag-box">
+						<div class="story-tags" >
+							{{> "systems/city-of-mist/templates/parts/story-tag-header.html" owner=actor  sheetowner=actor}}
+							<div class="story-tag-category">
+								{{> "systems/city-of-mist/templates/parts/story-tag-list-display.html" canBurn=true taglist=actor.my_story_tags}}
+							</div>
+						</div>
+						<div class="status-text-list">
+							<div class="story-tags-header"> {{localize 'CityOfMist.terms.statuses' }}
+								<a class="create-status" data-item-type="status" data-duplicates="false" data-actor-id={{actor.id}}> 
+									<i class="fas fa-plus-square"></i>
+								</a>
+							</div>
+							<hr>
+							{{> "systems/city-of-mist/templates/parts/status-text-list.html" actor=actor}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab tab-content" data-group="primary" data-tab="bio">
+			{{> "systems/city-of-mist/templates/parts/bio-display.html" actor=actor locked=actor.system.locked sheetowner=actor owner=owner}}
+		</div>
+		<div class="tab tab-content" data-group="primary" data-tab="themes">
+			<section id="theme-section" class="theme-section">
+				<div id="Theme Header" class="item-block section-header">
+					<div class="theme-header">Themes
+						{{#if (eq actor.system.locked false)}}
+						{{#if (lt actor.mainThemes.length 1)}}
+						<a class="item-create-theme" data-distinct="true" data-item-type="themebook" data-duplicates="false" data-actor-id={{actor.id}}> <i class="fas fa-plus-square"></i></a>
+						{{/if}}
+						{{/if}}
+					</div>
+				</div>
+				<div class="theme-block-group">
+					{{#each actor.mainThemes as |item i|}}
+					<div class="flip-card flex-theme-block-flip" data-card-id="{{i}}">
+						{{> "systems/city-of-mist/templates/parts/theme-display.html" owner=../actor theme=item locked=../actor.system.locked sheetowner=../actor themetype="character" data=item.system themebook=item.themebook tbdata=item.themebook.system cardNum=i}}
+					</div>
+					{{/each}}
+					<div class="flex-theme-block status-box" >
+						{{> "systems/city-of-mist/templates/parts/status-text-list.html" owner=actor locked=actor.system.locked sheetowner=actor}}
+					</div>
+					<div class="flex-theme-block story-tag-box" >
+						{{> "systems/city-of-mist/templates/parts/story-tag-display.html" owner=actor locked=false sheetowner=actor canBurn=true taglist=storyTags}}
+					</div>
+				</div>
+			</section>
+		</div>
+	</section>
+
+</form>

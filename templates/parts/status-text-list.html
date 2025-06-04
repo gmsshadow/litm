@@ -1,0 +1,8 @@
+<div>
+{{#each actor.items as |status id|}}
+{{#if (eq status.type "status")}}
+{{> "systems/city-of-mist/templates/parts/status-with-controls.hbs" status=status }}
+{{/if}}
+{{/each}}
+</div>
+

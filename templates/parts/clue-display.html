@@ -1,0 +1,21 @@
+<section class="card-style clue-data-block" data-clue-id="{{clue.id}}" data-owner-id="{{owner.id}}">
+	<a class="item-control clue-delete" title="Delete Clue"><i class="fas fa-trash"></i></a>
+	<span id="clue-name-{{clue.id}}" class="card-name clue-name {{#if locked}} clue-select-button {{else}} clue-edit-button {{/if}}">
+		{{#if (gt clue.system.amount 1)}}
+		({{clue.system.amount}})
+		{{/if}}
+		{{clue.displayedName}}
+		{{#if clue.system.partial}}
+		(partial)
+		{{/if}}
+	</span>
+	<button class="clue-use-button" title='{{localize "CityOfMist.characterSheet.useClue.tooltip"}}'>
+		{{localize "CityOfMist.characterSheet.useClue.button"}}
+	</button>
+	<div class="clue-source">
+		<b> {{localize "CityOfMist.terms.clueSource"}} :</b> {{clue.system.source}}
+	</div>
+	<div class="clue-method">
+		<b> {{localize "CityOfMist.terms.clueMethod"}} :</b> {{clue.system.method}}
+	</div>
+</section>

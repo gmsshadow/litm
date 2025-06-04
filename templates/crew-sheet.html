@@ -1,0 +1,35 @@
+<form class="{{cssClass}} crew-sheet {{#if actor.system.locked}} locked item-selection-context {{else}} unlocked item-edit-context {{/if}}" autocomplete="off" data-owner-id="{{actor.id}}" data-sheet-owner-id="{{actor.id}}" data-token-id="{{actor.tokenId}}" data-scene-id="{{actor.sceneId}}">
+	<header id="basic-info" class="sheet-header">
+		<div class="image-block">
+			<img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+		</div>
+	<div class="character-basic-info">
+		<div id="name">
+			<input type="text" id="crew-name" name="name" value="{{actor.name}}">
+		</div>
+	</div>
+	<div class="lock-button">
+		{{> "systems/city-of-mist/templates/parts/lock-button.html" data=data actor=actor}}
+	</div>
+	</header>
+	<section class="sheet-body {{#if actor.system.locked}} locked item-selection-context {{else}} unlocked item-edit-context {{/if}} ">
+		<section id="theme-section" class="theme-section">
+			<h1 id="Theme Header" class="flex-horizontal item-block">
+				<p>Themes
+				{{#if (eq actor.system.locked false)}}
+				{{#if (lt actor.mainThemes.length 3)}}
+				<a class="item-create-theme" data-distinct="true" data-item-type="themebook" data-duplicates="false" data-actor-id={{actor.id}}> <i class="fas fa-plus-square"></i></a>
+				{{/if}}
+				{{/if}}
+				</p>
+			</h1>
+			<div class="theme-block-group">
+				{{#each actor.mainThemes as |item i|}}
+				<div class="flip-card flex-theme-block-flip " data-card-id="{{i}}" >
+					{{> "systems/city-of-mist/templates/parts/theme-display.html" owner=../actor theme=item locked=../actor.system.locked sheetowner=../actor themetype="crew" data=item.system themebook=item.themebook tbdata=item.themebook.system cardNum=i}}
+				</div>
+				{{/each}}
+			</div>
+		</section>
+	</section>
+</form>

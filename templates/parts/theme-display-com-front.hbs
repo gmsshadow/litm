@@ -1,0 +1,78 @@
+<div class="{{theme.themebook.subtype}}-theme theme-block " >
+	<div class="themebook-name flip-button">
+		{{#if (allowThemeSwitch theme sheetowner)}}
+		<a class="item-control theme-prev">
+			<i class="fas fa-arrow-left"></i>
+		</a>
+		{{/if}}
+		{{#if (flashyLevelUp theme)}}
+		<span class="level-up-arrow" title='{{localize "CityOfMist.message.levelUpAvailable"}}'>
+			<i class="fa-solid fa-up-long"></i>
+		</span>
+		{{/if}}
+		<span class="themebook-name">
+			{{theme.themebook.displayedName}}
+		</span>
+		{{#if (allowThemeSwitch theme sheetowner)}}
+		<a class="item-control theme-next">
+			<i class="fas fa-arrow-right"></i>
+		</a>
+		{{/if}}
+	</div>
+	<div class ="theme-title">
+		<form class="theme-name">
+			<textarea class="theme-name-input borderless" type="text" wrap="soft" rows="2" maxlength="52" {{#if locked}} disabled {{/if}}>{{theme.name}}</textarea>
+		</form>
+		{{#if (eq owner.system.locked false)}}
+		{{#if (eq theme.themebook.type "themekit")}}
+		<a class="item-control edit-themekit" title="Edit ThemeKit" data-tk-id="{{theme.themebook.id}}"><i class="fas fa-pencil"></i></a>
+		{{/if}}
+		{{#if (hasCustomThemebook theme)}}
+		<a class="item-control edit-themebook" title="Edit ThemeBook" data-tk-id="{{theme.themebook.id}}">
+			<i class="fa-solid fa-book"></i>
+		</a>
+		{{/if}}
+		<a class="item-control theme-delete delete-button" title="Delete Theme"><i class="theme-trash fas fa-trash"></i></a>
+		{{/if}}
+		{{#if theme.system.nascent}} <div class="nascent-label">
+			{{localize "CityOfMist.terms.nascent"}}
+		</div>
+		{{/if}}
+	</div>
+	<div class="themebook-motivation-label"> <b class="themebook-motivation">
+			{{theme.motivationName}}
+		</b>
+	</div>
+	<textarea class="motivation-input borderless" type="text" value="{{theme.system.mystery}}" data-property="mystery" {{#if (eq locked true)}} disabled{{/if}}>{{theme.system.mystery}}</textarea>
+
+	<div class="tag-add-icons">
+		<div id="tags-header" class="tags-header"> {{localize 'CityOfMist.terms.themeTags' }}
+
+				{{#if (gt theme.system.unspent_upgrades 0)}}
+				<a class="theme-create-power-tag" data-distinct="true" data-item-type="tag" data-duplicates="false" title="Add Power Tag" data-sub-type="power" > <i class="fas fa-bolt"></i></a>
+				{{else}}
+				<span title ="Not enough attention to add power tag">
+					<i class="fas fa-bolt fa-disabled"></i>
+				</span>
+				{{/if}}
+				{{#if (eq owner.system.locked false)}}
+				<a class="theme-create-bonus-tag" data-distinct="true" data-item-type="tag" data-duplicates="false" title="Add Bonus Power Tag" data-sub-type="power" >
+					<i class="fas fa-star"></i>
+				</a>
+				<a class="theme-create-weakness-tag" data-distinct="true" data-item-type="tag" data-duplicates="false" data-sub-type="weakness" title="Add Weakness Tag" > 
+					<i class="fas fa-anchor" ></i>
+				</a>
+					{{else}}
+					<span title="Can't add Bonus Tag when sheet is locked">
+						<i class="fas fa-star fa-disabled"></i>
+					</span>
+					<span title="Can't add Weakness Tag when sheet is locked">
+						<i class="fas fa-anchor fa-disabled" ></i>
+					</span>
+					{{/if}}
+			</div>
+		</div>
+		{{> "systems/city-of-mist/templates/parts/tag-list-display.hbs" itemlist=theme.powerTags owner=owner locked=locked sheetowner=sheetowner canBurn=true subtype="power" themeId=theme.id supertag=""}}
+		{{> "systems/city-of-mist/templates/parts/tag-list-display.hbs" itemlist=theme.weaknessTags owner=owner locked=owner.system.locked sheetowner=sheetowner canBurn=true subtype="weakness" themeId=theme.id supertag=""}}
+</div>
+

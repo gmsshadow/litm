@@ -1,0 +1,48 @@
+<form class="{{cssClass}} improvement-sheet" autocomplete="off" data-owner-id="{{item.id}}" data-sheet-owner-id="{{item.id}}" data-owner-class="item">
+	{{#if (not item.system.chosen)}}
+	<header class="sheet-header">
+		<img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" />
+		<input name="name" type="text" value="{{item.name}}" placeholder="Name"/>
+	</header>
+	<div>
+		<label>
+			System
+		</label>
+	</div>
+	<select class="" name="system.system_compatiblity" title="System choice"> {{selectOptions TBSYSTEMLIST localize=true selected=item.system.system_compatiblity}}
+	</select>
+	<label> Uses </label>
+	<input name="system.uses.max" value="{{item.system.uses.max}}">
+	<label class="dialog-label" for="free-content"> Allow Override </label>
+	<input type="checkbox" name="system.free_content" {{#if item.system.free_content}} checked {{/if}}> <br>
+	<label class="dialog-label" for="Flags"> Special Flags </label>
+	<input type="text" name="system.effect_class" value="{{item.system.effect_class}}">
+	<label>
+		{{localize "CityOfMist.terms.description"}}
+	</label>
+	<textarea type="text" name="system.description">{{item.system.description}}</textarea>
+	{{else}}
+	<div class="improvement-name-send"> Description </div>
+	<div>{{item.system.description}}</div>
+	<hr>
+	<label>
+		{{localize "CityOfMist.terms.choice"}}
+	</label>
+	{{#if (eq item.system.choice_type "core_move")}}
+	<select name="system.choice_item">
+		{{#select item.system.choice_item}}
+		{{#each movelist as |move|}}
+		<option value="{{move}}"> {{move}} </option>
+		{{move}}
+		{{/each}}
+		{{/select}}
+	</select>
+	{{else}}
+	<input class="input-small" type="text" name="system.choice_item" value="{{item.system.choice_item}}">
+	{{/if}}
+	{{#if item.system.uses.max}}
+	<div> Uses {{item.system.uses.current}} / {{item.system.uses.max}} </div>
+	{{/if}}
+	{{/if}}
+
+</form>

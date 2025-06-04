@@ -1,0 +1,20 @@
+<ul class="tag-list">
+	{{#each itemlist as |tag |}}
+	{{#if (eqStr tag.system.parentId ../supertag)}}
+	<li>
+		<span class="main-tag">
+			{{> "systems/city-of-mist/templates/parts/tag-display.html" tag=tag locked=../locked canBurn=true }}
+		</span>
+		{{#if tag.subtags}}
+		{{#each tag.subtags as |st|}}
+		<ul class="sub-tag-list">
+			<li class="sub-tag">
+				{{> "systems/city-of-mist/templates/parts/tag-display.html" tag=st locked=../../locked canBurn=true }}
+			</li>
+		</ul>
+		{{/each}}
+	</li>
+	{{/if}}
+	{{/if}}
+	{{/each}}
+</ul>

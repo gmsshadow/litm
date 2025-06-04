@@ -1,0 +1,24 @@
+<div class="improvements-section">
+	<h1 class="header">
+		Improvements
+		<a class="tk-create-imp"> <i class="fas fa-plus-square"></i></a>
+	</h1>
+	{{#if item.system.themebook_name}}
+	<label class="themekit-checkbox">
+		{{localize "CityOfMist.themekit.html.inherit_improvements_checkbox"}}
+	</label>
+	<input type="checkbox" class="themekit-checkbox" name="system.use_tb_improvements" {{#if item.system.use_tb_improvements}} checked {{/if}}>
+	{{/if}}
+	{{#each item.system.improvements as |imp ind|}}
+	<div class="tk-improvement">
+		<a class="tk-delete-imp" title="Delete Improvement" data-index="{{ind}}"><i class="fas fa-trash"></i></a>
+		<input class="tk-imp-name" name="system.improvements.{{ind}}.name" type="text" value="{{imp.name}}" placeholder=""/>
+		<input class="tk-imp-description" name="system.improvements.{{ind}}.description" type="text" value="{{imp.description}}" placeholder=""/>
+		<input class="improvement-uses" name="system.improvements.{{ind}}.uses" type="number" value="{{imp.uses}}" placeholder="" title="Number of Uses"/>
+		{{#if (devMode)}}
+				<input class="effect-class" name="system.improvements.{{ind}}.effect_class" type="text" value="{{imp.effect_class}}" placeholder="" title="Effect Class"/>
+				{{/if}}
+	</div>
+	{{/each}}
+</div>
+</h2>

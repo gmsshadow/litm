@@ -1,0 +1,19 @@
+<div class="{{tagtype}}-questions">
+	<h1 class="header"> {{tagtype}} tags
+	</h1>
+	{{#each tagList as |tag ind|}}
+	{{#if ../item.system.themebook_id}}
+	<span>Question</span>
+	<div class="question">
+		{{tag.letter}}
+		{{getTBQuestion ../item.themebook tag.letter ../tagtype}}
+	</div>
+	{{/if}}
+	<div class="tk-tag">
+		<input class="tk-tagname-letter" name="system.{{../tagtype}}_tagstk.{{ind}}.letter" type="hidden" value="{{tag.letter}}" placeholder=""/>
+		<input class="tk-tagname-entry" name="system.{{../tagtype}}_tagstk.{{ind}}.tagname" type="text" value="{{tag.tagname}}" placeholder=""/>
+		<input class="tk-tagname-description" name="system.{{../tagtype}}_tagstk.{{ind}}.description" type="text" value="{{tag.description}}" placeholder=""/>
+	</div>
+	{{/each}}
+</div>
+
