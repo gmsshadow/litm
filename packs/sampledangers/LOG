@@ -1,0 +1,24 @@
+2025/06/05-00:14:56.211 33a8 Recovering log #11
+2025/06/05-00:14:56.211 33a8 Level-0 table #13: started
+2025/06/05-00:14:56.223 33a8 Level-0 table #13: 4932 bytes OK
+2025/06/05-00:14:56.242 33a8 Delete type=0 #11
+2025/06/05-00:14:56.245 33a8 Delete type=3 #10
+2025/06/05-00:15:30.526 3ba4 Level-0 table #16: started
+2025/06/05-00:15:30.537 3ba4 Level-0 table #16: 5006 bytes OK
+2025/06/05-00:15:30.544 3ba4 Delete type=0 #14
+2025/06/05-00:15:30.615 3ba4 Manual compaction at level-0 from '!actors!LD0GRLAPl7sCF9eW' @ 72057594037927935 : 1 .. '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 0 : 0; will stop at '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 31 : 1
+2025/06/05-00:15:30.615 3ba4 Compacting 2@0 + 0@1 files
+2025/06/05-00:15:30.625 3ba4 Generated table #17@0: 16 keys, 5006 bytes
+2025/06/05-00:15:30.625 3ba4 Compacted 2@0 + 0@1 files => 5006 bytes
+2025/06/05-00:15:30.632 3ba4 compacted to: files[ 0 1 1 0 0 0 0 ]
+2025/06/05-00:15:30.632 3ba4 Delete type=2 #13
+2025/06/05-00:15:30.633 3ba4 Delete type=2 #16
+2025/06/05-00:15:30.680 3ba4 Manual compaction at level-0 from '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 31 : 1 .. '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 0 : 0; will stop at (end)
+2025/06/05-00:15:30.702 3ba4 Manual compaction at level-1 from '!actors!LD0GRLAPl7sCF9eW' @ 72057594037927935 : 1 .. '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 0 : 0; will stop at '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 47 : 1
+2025/06/05-00:15:30.702 3ba4 Compacting 1@1 + 1@2 files
+2025/06/05-00:15:30.713 3ba4 Generated table #18@1: 16 keys, 5006 bytes
+2025/06/05-00:15:30.713 3ba4 Compacted 1@1 + 1@2 files => 5006 bytes
+2025/06/05-00:15:30.718 3ba4 compacted to: files[ 0 0 1 0 0 0 0 ]
+2025/06/05-00:15:30.718 3ba4 Delete type=2 #7
+2025/06/05-00:15:30.719 3ba4 Delete type=2 #17
+2025/06/05-00:15:30.745 3ba4 Manual compaction at level-1 from '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 47 : 1 .. '!actors.items!VyBA84uHqW6rsBC9.oIdDl3Ctirg0nOek' @ 0 : 0; will stop at (end)
