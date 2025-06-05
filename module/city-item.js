@@ -1370,6 +1370,7 @@ export class CityItem extends Item {
                 case "Mist": return 2;
                 case "Self":
                 case "Origin":
+                case "Adventure":
                 case "Logos": return 3;
                 case "Extra":
                 case "Loadout": return 4;
